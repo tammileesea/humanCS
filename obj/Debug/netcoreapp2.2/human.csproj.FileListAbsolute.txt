@@ -1,0 +1,11 @@
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/bin/Debug/netcoreapp2.2/human.deps.json
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/bin/Debug/netcoreapp2.2/human.runtimeconfig.json
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/bin/Debug/netcoreapp2.2/human.runtimeconfig.dev.json
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/bin/Debug/netcoreapp2.2/human.dll
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/bin/Debug/netcoreapp2.2/human.pdb
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.csprojAssemblyReference.cache
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.csproj.CoreCompileInputs.cache
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.AssemblyInfoInputs.cache
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.AssemblyInfo.cs
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.dll
+/Users/tammilee/Desktop/codingDojo/csharp/OOP/human/obj/Debug/netcoreapp2.2/human.pdb
