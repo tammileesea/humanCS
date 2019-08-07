@@ -70,6 +70,11 @@ namespace human
             Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.health}, but {Name}'s health is now {health}");
             return target.health;
         }
+        private int Heal (Human target)
+        {
+             target.health += 10 * Intelligence;
+             return target.health;
+        }
     }
 
     class Ninja : Human
@@ -137,6 +142,10 @@ namespace human
             }
             Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {BooBoo}");
             return BooBoo;
+        }
+        public int Meditate()
+        {
+            health = 200;
         }
     }
     
