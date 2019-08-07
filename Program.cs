@@ -70,10 +70,10 @@ namespace human
             Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.health}, but {Name}'s health is now {health}");
             return target.health;
         }
-        private int Heal (Human target)
+        private void Heal (Human target)
         {
-             target.health += 10 * Intelligence;
-             return target.health;
+            target.health += 10 * Intelligence;
+            Console.WriteLine($"{target.Name}'s health is now {target.health}");
         }
     }
 
@@ -111,6 +111,12 @@ namespace human
             Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.health}, but {Name}'s health is now {health}");
             return target.health;
         }
+        private void Steal (Human target)
+        {
+            target.health -= 5;
+            health += 5;
+            Console.WriteLine($"{target.Name}'s health is now {target.health}, and my health is now {health}");
+        }
     }
 
     class Samurai : Human
@@ -143,9 +149,10 @@ namespace human
             Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {BooBoo}");
             return BooBoo;
         }
-        public int Meditate()
+        private void Meditate()
         {
             health = 200;
+            Console.WriteLine("Health is now back to 200!");
         }
     }
     
