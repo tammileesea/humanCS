@@ -11,17 +11,23 @@ namespace human
         protected int health; 
         public int Health
         {
-            get { return health; }
+            get 
+            { 
+                return health; 
+            }
+            set
+            {
+                health = value;
+            }
         }
         public Human(string NameInput)
         {
             Name = NameInput;
-            Console.WriteLine($"My name is {NameInput}");
-            // Strength = 3;
-            // Intelligence = 3;
-            // Dexterity = 3;
-            // health = 100;
-            // Console.WriteLine($"My name is {NameInput}, strength: {Strength}, intelligence: {Intelligence}, dexterity: {Dexterity}, health: {health}");
+            Strength = 3;
+            Intelligence = 3;
+            Dexterity = 3;
+            health = 100;
+            Console.WriteLine($"My name is {NameInput}, strength: {Strength}, intelligence: {Intelligence}, dexterity: {Dexterity}, health: {health}");
         }
 
         public Human(string NameInput, int StrengthInput, int IntelligenceInput, int DexterityInput, int HealthInput)
@@ -37,122 +43,95 @@ namespace human
         public virtual int Attack (Human target)
         {
             int BooBoo = target.health;
-            BooBoo -= 5 * Strength;
-            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {BooBoo}");
+            Console.WriteLine($"Health is {target.health}");
+            Console.WriteLine($"Strength is {Strength}");
+            // BooBoo = BooBoo - (5 * Strength);
+            // Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {BooBoo}");
             return BooBoo;
         }
     }
 
     class Wizard : Human
     {
-        public new int Strength;
-        public new int Intelligence;
-        public new int Dexterity;
-        protected new int health; 
-        public new int Health
-        {
-            get { return health; }
-        }
         public Wizard(string name) : base(name)
         {
             Name = name;
-            Strength = 3;
             Intelligence = 25;
-            Dexterity = 3;
             health = 50;
             Console.WriteLine($"My name is {Name}, I am a wizard! strength: {Strength}, intelligence: {Intelligence}, dexterity: {Dexterity}, health: {health}");
         }
         public override int Attack (Human target)
         {
             int healthDamage = 5 * Intelligence;
-            target.health -= healthDamage;
+            int targetHealth = target.Health;
+            // Console.WriteLine($"target health: {targetHealth}");
+            targetHealth -= healthDamage;
+            // Console.WriteLine($"Health after damage: {targetHealth}");
             health += healthDamage;
-            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.health}, but {Name}'s health is now {health}");
-            return target.health;
+            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {targetHealth}, but {Name}'s health is now {health}");
+            return targetHealth;
         }
-        private void Heal (Human target)
+
+        public void Heal (Human target)
         {
-            target.health += 10 * Intelligence;
-            Console.WriteLine($"{target.Name}'s health is now {target.health}");
+            target.Health += 10 * Intelligence;
+            Console.WriteLine($"{target.Name}'s health is now {target.Health}");
         }
     }
 
     class Ninja : Human
     {
-        public new int Strength;
-        public new int Intelligence;
-        public new int Dexterity;
-        protected new int health; 
-        public new int Health
-        {
-            get { return health; }
-        }
         public Ninja(string name) : base(name)
         {
             Name = name;
-            Strength = 3;
-            Intelligence = 3;
             Dexterity = 175;
-            health = 100;
             Console.WriteLine($"My name is {Name}, I am a ninja! strength: {Strength}, intelligence: {Intelligence}, dexterity: {Dexterity}, health: {health}");
         }
         public override int Attack (Human target)
         {
             int healthDamage = 5 * Dexterity;
-            target.health -= healthDamage;
+            target.Health -= healthDamage;
             health += healthDamage;
             Random extraDamage = new Random();
             int i = extraDamage.Next(1, 5);
             if (i == 1)
             {
-                target.health -= 10; 
+                target.Health -= 10; 
             }
 
-            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.health}, but {Name}'s health is now {health}");
-            return target.health;
+            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.Health}, but {Name}'s health is now {Health}");
+            return target.Health;
         }
-        private void Steal (Human target)
+        public void Steal (Human target)
         {
-            target.health -= 5;
+            target.Health -= 5;
             health += 5;
-            Console.WriteLine($"{target.Name}'s health is now {target.health}, and my health is now {health}");
+            Console.WriteLine($"{target.Name}'s health is now {target.Health}, and my health is now {health}");
         }
     }
 
     class Samurai : Human
     {
-        public new int Strength;
-        public new int Intelligence;
-        public new int Dexterity;
-        protected new int health; 
-        public new int Health
-        {
-            get { return health; }
-        }
         public Samurai(string name) : base(name)
         {
             Name = name;
-            Strength = 3;
-            Intelligence = 3;
-            Dexterity = 3;
             health = 200;
             Console.WriteLine($"My name is {Name}, I am a samurai! strength: {Strength}, intelligence: {Intelligence}, dexterity: {Dexterity}, health: {health}");
         }
         public override int Attack (Human target)
         {
-            int BooBoo = target.health;
-            BooBoo -= 5 * Strength;
-            if (BooBoo < 50)
+            base.Attack(target);
+            if (target.Health < 50)
             {
-                BooBoo = 0;
+                target.Health = 0;
             }
-            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {BooBoo}");
-            return BooBoo;
+            Console.WriteLine($"{target.Name} was attacked by {Name} and their health is now {target.Health}");
+            return target.Health;
         }
-        private void Meditate()
+        public void Meditate()
         {
             health = 200;
-            Console.WriteLine("Health is now back to 200!");
+            Console.WriteLine($"{Name}'s health is now back to 200!");
         }
     }
     
@@ -160,10 +139,18 @@ namespace human
     {
         static void Main(string[] args)
         {
-            Human bob = new Human("Bobby");
+            Human bob = new Human("Bobby", 3, 3, 3, 100);
             Wizard tam = new Wizard("Tammi");
-            Ninja kevin = new Ninja("Kevin");
-            Samurai jesus = new Samurai("Jesus");
+            Ninja henry = new Ninja("Henry");
+            Samurai kim = new Samurai("Kim");
+            tam.Attack(bob);
+            tam.Heal(bob);
+            henry.Attack(bob);
+            henry.Steal(bob);
+            kim.Attack(bob);
+            kim.Meditate();
+            // Ninja kevin = new Ninja("Kevin");
+            // Samurai jesus = new Samurai("Jesus");
         }
     }
 }
